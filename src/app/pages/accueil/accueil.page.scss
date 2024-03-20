@@ -1,0 +1,25 @@
+ion-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  
+  
+  
+    p {
+      font-size: 25px; // Augmente la taille du texte
+      margin-bottom: 20px; // Espace entre le texte et le bouton
+      line-height: 1.4; // Espacement entre les lignes pour améliorer la lisibilité
+      color: #666; // Couleur du texte
+    }
+  
+    ion-button {
+      --background: #3690D1; // Couleur de fond du bouton
+      --color: white; // Couleur du texte du bouton
+      font-weight: bold; // Rend le texte du bouton en gras
+      border-radius: 4px;
+      font-size: 30px;    }
+  }
+  
