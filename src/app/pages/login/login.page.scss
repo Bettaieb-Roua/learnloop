@@ -5,4 +5,41 @@ h1 {
 }
 ion-content{
     font-family: cursive;
+    font-size: 20px;
+}
+
+ .login-btn{
+    --background: #3690D1; 
+    --color: white; 
+    font-weight: bold; 
+    border-radius: 20px;
+    font-size: 25px;   
+    font-family: cursive;
+
+ }
+ .input{
+    font-family: cursive;
+ }
+
+.forget-password{
+    cursor: pointer;
+    margin-left: 220px;
+    margin-top: 20px;
+    font-size: 20px;
+
+}
+.fcreate-account{
+    cursor: pointer;
+    margin-left: 100px;
+    margin-top: 20px;
+    font-size: 20px;
+
+}
+.media-btn{
+    --background: grey;
+    width:70px;
+    margin-left: 50px;
+}
+.icon{
+    width: 70px
 }

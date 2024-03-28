@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,13 +12,21 @@ export class LoginPage implements OnInit {
     password:''
   };
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
   
   submitForm(formValues: any) {
     console.log('Form Data: ', formValues);
-    // Ici, vous pouvez traiter les données du formulaire, comme les envoyer à un serveur
+  }
+  navigateToForgetPassword(){
+    this.router.navigate(['/forget-password']);
+  }
+  loginWithGoogle(){
+
+  }
+  loginWithFacebook(){
+    
   }
 }
