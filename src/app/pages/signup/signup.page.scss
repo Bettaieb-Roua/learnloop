@@ -1,0 +1,60 @@
+h1 {
+    font-size:50px;
+    font-family: cursive;
+
+}
+
+
+ .signup-btn{
+    --background: #3690D1; 
+    --color: white; 
+    font-weight: bold; 
+    border-radius: 20px;
+    font-size: 25px;   
+    font-family: cursive;
+
+ }
+ .input{
+    font-family: cursive;
+    font-size: 20px;
+ }
+ ion-radio {
+    --border-radius: 4px;
+    --inner-border-radius: 4px;
+  
+    --color: #ddd;
+    --color-checked: #6815ec;
+  }
+.forget-password{
+    cursor: pointer;
+    margin-left: 220px;
+    margin-top: 20px;
+    font-size: 20px;
+
+}
+.seller{
+    margin-left: 100px;
+
+}
+.create-account{
+    cursor: pointer;
+    margin-left: 100px;
+    margin-top: 20px;
+    font-size: 20px;
+
+}
+.media-btn{
+    --background: #b3afaf;
+    width:60px;
+    margin-left: 50px;
+}
+.icon{
+    margin-left: 9px;
+    width: 30px;
+    height:30px;
+}
+.custom-text{
+    font-size:18px;
+    font-family: cursive;
+
+}

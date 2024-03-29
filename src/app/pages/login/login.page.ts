@@ -29,4 +29,7 @@ export class LoginPage implements OnInit {
   loginWithFacebook(){
     
   }
+  navigateToSignup(){
+    this.router.navigate(['/signup']);
+  }
 }

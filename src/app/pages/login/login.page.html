@@ -3,17 +3,12 @@
 <ion-content class="ion-padding">
   <br><br><br>
  <ion-text > 
-  <h1>Login page </h1>
+  <h1>Login </h1>
  </ion-text>
  <br><br><br>
 
   <form #loginForm="ngForm" (ngSubmit)="submitForm(loginForm.value)">
 
-
-    <!-- <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" required [(ngModel)]="loginData.email" name="email"></ion-input>
-    </ion-item> -->
     <ion-input class='input' label="Email" label-placement="floating"  fill="outline" placeholder="Enter Email"></ion-input>
     <ion-input class="input" label="Password" label-placement="floating"  fill="outline" placeholder="Enter password" type="password"></ion-input>
   </form>
@@ -23,7 +18,7 @@
   <br>
   <ion-button class="login-btn" type="submit" expand="block" [disabled]="!loginForm.valid">Login</ion-button>
   <ion-text>
-    <p class="create-account" (click)="navigateToForgetPassword()">You don't have an account ? create one</p>
+    <p class="create-account" (click)="navigateToSignup()">You don't have an account ? create one</p>
   </ion-text>
 <br><br>
 <ion-text> Or login with social account </ion-text>
@@ -38,7 +33,7 @@
     </ion-col>
     <ion-col size="6">
       <ion-button class="media-btn" expand="block" (click)="loginWithFacebook()">
-        <ion-icon slot="start" name="logo-facebook"></ion-icon>
+        <ion-icon class="icon" slot="start" name="logo-facebook"></ion-icon>
      
       </ion-button>
     </ion-col>
