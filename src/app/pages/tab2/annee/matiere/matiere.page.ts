@@ -8,37 +8,37 @@ import { ActivatedRoute ,Router} from '@angular/router';
 })
 export class MatierePage implements OnInit {
   matieresPr12=[
-    { title: 'Sciences Naturelles', route: '1' },
-    { title: 'Mathématiques', route: '2' },
-    { title: 'Arabe', route: '3' },
+    { title: 'Sciences Naturelles', route: 'Sciences Naturelles' },
+    { title: 'Mathématiques', route: 'Mathématiques' },
+    { title: 'Arabe', route: 'Arabe' },
   ]
   matieresPr34=[
-    { title: 'Sciences Naturelles', route: '1' },
-    { title: 'Mathématiques', route: '2' },
-    { title: 'Arabe', route: '3' },
-    { title: 'Français', route: '4' },
+    { title: 'Sciences Naturelles', route: 'Sciences Naturelles' },
+    { title: 'Mathématiques', route: 'Mathématiques' },
+    { title: 'Arabe', route: 'Arabe' },
+    { title: 'Français', route: 'Français' },
   ]
   matieresPr56=[
-    { title: 'Sciences Naturelles', route: '1' },
-    { title: 'Mathématiques', route: '2' },
-    { title: 'Arabe', route: '3' },
-    { title: 'Français', route: '4' },
-    { title: 'Anglais', route: '5' },
-    { title: 'Informatique', route: '6' },
+    { title: 'Sciences Naturelles', route: 'Sciences Naturelles' },
+    { title: 'Mathématiques', route: 'Mathématiques' },
+    { title: 'Arabe', route: 'Arabe' },
+    { title: 'Français', route: 'Français' },
+    { title: 'Anglais', route: 'Anglais' },
+    { title: 'Informatique', route: 'Informatique' },
 
   ]
   matieresCollege=[
-    { title: 'Sciences Naturelles', route: '1' },
-    { title: 'Mathématiques', route: '2' },
-    {title:"Physique", route :'11'},
-    { title: 'Arabe', route: '3' },
-    { title: 'Français', route: '4' },
-    { title: 'Anglais', route: '5' },
-    { title: 'Informatique', route: '6' },
-    {title: 'Histoire ', route: '7'},
-    {title: 'Géographie', route: '8'},
-    {title:"Education Islamique", route :'9'},
-    {title:"Education Civile", route :'10'}
+    { title: 'Sciences Naturelles', route: 'Sciences Naturelles' },
+    { title: 'Mathématiques', route: 'Mathématiques' },
+    {title:"Physique", route :'Physique'},
+    { title: 'Arabe', route: 'Arabe' },
+    { title: 'Français', route: 'Français' },
+    { title: 'Anglais', route: 'Anglais' },
+    { title: 'Informatique', route: 'Informatique' },
+    {title: 'Histoire ', route: 'Histoire'},
+    {title: 'Géographie', route: 'Géographie'},
+    {title:"Education Islamique", route :'Education Islamique'},
+    {title:"Education Civile", route :'Education Civile'}
 
   ]
  
