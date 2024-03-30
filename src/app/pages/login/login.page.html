@@ -6,7 +6,6 @@
   <h1>Login </h1>
  </ion-text>
  <br><br><br>
-
   <form #loginForm="ngForm" (ngSubmit)="submitForm(loginForm.value)">
 
     <ion-input class='input' label="Email" label-placement="floating"  fill="outline" placeholder="Enter Email"></ion-input>
@@ -16,7 +15,7 @@
     <p class="forget-password" (click)="navigateToForgetPassword()">Forgot Password?</p>
   </ion-text>
   <br>
-  <ion-button class="login-btn" type="submit" expand="block" [disabled]="!loginForm.valid">Login</ion-button>
+  <ion-button class="login-btn" type="submit" expand="block" [disabled]="!loginForm.valid" (click)="login()">Login</ion-button>
   <ion-text>
     <p class="create-account" (click)="navigateToSignup()">You don't have an account ? create one</p>
   </ion-text>

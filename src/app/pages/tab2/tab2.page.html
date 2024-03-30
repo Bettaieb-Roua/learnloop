@@ -1,0 +1,12 @@
+
+
+<ion-content [fullscreen]="true">
+  <br><br>
+  <ion-text > 
+    <h1><b>Choisir niveau d'éducation:</b></h1>
+   </ion-text>
+   <ion-card style="display: flex; align-items: center;" *ngFor="let level of educationLevels" (click)="goToEducationLevel(level.route)">
+    <ion-card-title style="flex: 1;">{{ level.title }}</ion-card-title>
+    <img [alt]="level.title" [src]="level.image" />
+  </ion-card>
+</ion-content>

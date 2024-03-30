@@ -1,0 +1,44 @@
+
+<ion-content>
+  <br>
+  <h1><b>Choisir année du niveau {{ niveauSelectionne }} :</b></h1>
+  <br>
+  <div  *ngIf= " niveauSelectionne === 'primaire'">
+    <ion-card   *ngFor="let annee of anneesPrimaire" >
+   
+ 
+      <ion-card-content >{{ annee.title }}</ion-card-content>
+</ion-card>
+<br>
+  </div>
+  <div  *ngIf= " niveauSelectionne === 'college'">
+    <ion-card   *ngFor="let annee of anneesCollege">
+   
+ 
+      <ion-card-content >{{ annee.title }}</ion-card-content>
+</ion-card>
+<br>
+  </div>
+  <div  *ngIf= " niveauSelectionne === 'secondaire'" >
+    <ion-card     >
+   
+ 
+      <ion-card-content >{{anneesSecondaire[0].title}}</ion-card-content>
+</ion-card>  
+    <ion-card   *ngFor="let annee of anneesSecondaireSansPremier;" (click)="goToSection(annee.route)" >
+   
+ 
+      <ion-card-content >{{ annee.title }}</ion-card-content>
+</ion-card>
+<br>
+  </div>
+  <div  *ngIf= " niveauSelectionne === 'superieur'">
+    <ion-card   *ngFor="let annee of anneesSuperieur">
+   
+ 
+      <ion-card-content >{{ annee.title }}</ion-card-content>
+</ion-card>
+<br>
+  </div>
+ 
+</ion-content>

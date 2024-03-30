@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
     console.log('Form Data: ', formValues);
   }
   navigateToForgetPassword(){
-    this.router.navigate(['/forget-password']);
+    this.router.navigate(['/forgetpassword']);
   }
   loginWithGoogle(){
 
@@ -31,5 +31,8 @@ export class LoginPage implements OnInit {
   }
   navigateToSignup(){
     this.router.navigate(['/signup']);
+  }
+  login(){
+    this.router.navigate(['/tab']);
   }
 }
