@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-matiere-section',
@@ -8,60 +8,61 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MatiereSectionPage implements OnInit {
   matieresMSc=[
-    { title: 'Sciences Naturelles', route: '1' },
-    { title: 'Mathématiques', route: '2' },
-    {title:"Physique", route :'11'},
-    { title: 'Arabe', route: '3' },
-    { title: 'Philo', route: '3' },
-    { title: 'Français', route: '4' },
-    { title: 'Anglais', route: '5' },
-    { title: 'Informatique', route: '6' },
-    { title: 'Option', route: '7' },
+    { title: 'Sciences Naturelles', route: 'sc' },
+    { title: 'Mathématiques', route: 'math' },
+    {title:"Physique", route :'Phy'},
+    { title: 'Arabe', route: 'Ar' },
+    { title: 'Philo', route: 'philo' },
+    { title: 'Français', route: 'Fr' },
+    { title: 'Anglais', route: 'Ang' },
+    { title: 'Informatique', route: 'Inf' },
+    { title: 'Option', route: 'Opt' },
   ]
   matieresLettre=[
-    { title: 'Arabe', route: '3' },
-    { title: 'Français', route: '4' },
-    { title: 'Anglais', route: '5' },
-    { title: 'Informatique', route: '6' },
-    {title: 'Histoire ', route: '7'},
-    {title: 'Géographie', route: '8'},
-    {title:"Education Islamique", route :'9'},
-    {title:"Education Civile", route :'10'},
-    {title: 'Philo', route: '3' },
-    { title: 'Option', route: '7' },
+    { title: 'Arabe', route: 'Ar' },
+    { title: 'Français', route: 'Fr' },
+    { title: 'Anglais', route: 'Ang' },
+    { title: 'Informatique', route: 'Inf' },
+    {title: 'Histoire ', route: 'Hist'},
+    {title: 'Géographie', route: 'Géo'},
+    {title:"Education Islamique", route :'Isl'},
+    {title:"Education Civile", route :'Civ'},
+    {title: 'Philo', route: 'philo' },
+    { title: 'Option', route: 'Opt' },
 
 
 
   ]
   matieresInfo=[
-    { title: 'Informatique', route: '6' },
-    { title: 'Mathématiques', route: '2' },
-    { title: 'Arabe', route: '3' },
-    { title: 'Philo', route: '3' },
-    { title: 'Français', route: '4' },
-    { title: 'Anglais', route: '5' }, 
-    { title: 'Option', route: '7' },
+    { title: 'Informatique', route: 'Inf' },
+    { title: 'Mathématiques', route: 'math' },
+    { title: 'Arabe', route: 'Ar' },
+    { title: 'Philo', route: 'philo' },
+    { title: 'Français', route: 'fr' },
+    { title: 'Anglais', route: 'Ang' }, 
+    { title: 'Option', route: 'Opt' },
 
   ]
   matieresEcoGest=[
-    {title: 'Economie ', route: '7'},
-    {title: 'Gestion', route: '8'},
-    {title: 'Histoire ', route: '7'},
-    {title: 'Géographie', route: '8'},
-    { title: 'Mathématiques', route: '2' },
-    { title: 'Arabe', route: '3' },
-    { title: 'Français', route: '4' },
-    { title: 'Anglais', route: '5' },
-    { title: 'Informatique', route: '6' },
-    {title: 'Philo', route: '3' },
-    { title: 'Option', route: '7' },
+    {title: 'Economie ', route: 'Eco'},
+    {title: 'Gestion', route: 'Gest'},
+    {title: 'Histoire ', route: 'Hist'},
+    {title: 'Géographie', route: 'Géo'},
+    { title: 'Mathématiques', route: 'math' },
+    { title: 'Arabe', route: 'Ar' },
+    { title: 'Français', route: 'Fr' },
+    { title: 'Anglais', route: 'Ang' },
+    { title: 'Informatique', route: 'Inf' },
+    {title: 'Philo', route: 'philo' },
+    { title: 'Option', route: 'Opt' },
 
   ]
   niveau: string | null = null; 
   annee: string | null = null;
   section: string | null = null;
+  matiere: string | null = null;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router:Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -70,7 +71,11 @@ export class MatiereSectionPage implements OnInit {
       this.section = params.get('section');
       
       
+      
     });
+  }
+  goToType(route: string){
+    this.router.navigateByUrl(`/tab/tabs/tab2/annee/${this.niveau}/section/${this.annee}/matiere-section/${ this.section}/type-document/${route}`)
   }
 
 }

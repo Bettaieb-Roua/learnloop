@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: MatiereSectionPage
+  },
+  {
+    path: 'type-document/:matiere',
+    loadChildren: () => import('./type-document/type-document.module').then( m => m.TypeDocumentPageModule)
   }
 ];
 

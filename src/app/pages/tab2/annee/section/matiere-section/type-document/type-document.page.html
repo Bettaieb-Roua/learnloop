@@ -1,0 +1,14 @@
+
+
+<ion-content [fullscreen]="true">
+  <br>
+  <h1><b>Choisir le document à acheter:</b></h1>
+  <br>
+  <div >
+    <ion-card   *ngFor="let type of typesDocuments" >
+   
+ 
+      <ion-card-content >{{ type.title }}</ion-card-content>
+</ion-card>
+  </div>
+</ion-content>

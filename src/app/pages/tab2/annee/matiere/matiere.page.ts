@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute ,Router} from '@angular/router';
+
 @Component({
   selector: 'app-matiere',
   templateUrl: './matiere.page.html',
@@ -45,7 +46,7 @@ export class MatierePage implements OnInit {
 
   niveau: string | null = null; 
   annee: string | null = null;
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router:Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -53,6 +54,9 @@ export class MatierePage implements OnInit {
       this.annee = params.get('annee');
       
     });
+  }
+  goToType(route: string){
+    this.router.navigateByUrl(`/tab/tabs/tab2/annee/${this.niveau}/matiere/${this.annee}/type-document/${route}`)
   }
 
 }
