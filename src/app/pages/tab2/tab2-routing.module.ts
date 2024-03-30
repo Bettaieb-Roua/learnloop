@@ -9,7 +9,7 @@ const routes: Routes = [
     component: Tab2Page,
   },  
   {
-      path:'annee/:id',
+      path:'annee/:niveau',
       loadChildren: () => import('./annee/annee.module').then( m => m.AnneePageModule)
   },
 

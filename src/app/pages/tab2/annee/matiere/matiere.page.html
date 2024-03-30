@@ -1,0 +1,34 @@
+
+<ion-content [fullscreen]="true">
+  <br>
+  <h1><b>Choisir la matière:</b></h1>
+  <br>
+  <div *ngIf="(niveau === 'primaire') && (annee === '1' || annee === '2')">
+    <ion-card   *ngFor="let matiere of matieresPr12" >
+   
+ 
+      <ion-card-content >{{ matiere.title }}</ion-card-content>
+</ion-card>
+  </div>
+  <div *ngIf="(niveau === 'primaire') && (annee === '3' || annee === '4')">
+    <ion-card   *ngFor="let matiere of matieresPr34" >
+   
+ 
+      <ion-card-content >{{ matiere.title }}</ion-card-content>
+</ion-card>
+  </div>
+  <div *ngIf="(niveau === 'primaire') && (annee === '5' || annee === '6')">
+    <ion-card   *ngFor="let matiere of matieresPr56" >
+   
+ 
+      <ion-card-content >{{ matiere.title }}</ion-card-content>
+</ion-card>
+  </div>
+  <div *ngIf="(niveau === 'college' ||(niveau=== 'secondaire'&& annee==='1')) ">
+    <ion-card   *ngFor="let matiere of matieresCollege" >
+   
+ 
+      <ion-card-content >{{ matiere.title }}</ion-card-content>
+</ion-card>
+  </div>
+</ion-content>

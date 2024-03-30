@@ -46,12 +46,16 @@ niveauSelectionne: string | null = null;
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.niveauSelectionne = params.get('id');
+      this.niveauSelectionne = params.get('niveau');
       this.anneesSecondaireSansPremier = this.anneesSecondaire.slice(1);
     });
   }
   goToSection(route:string){
     this.router.navigateByUrl(`/tab/tabs/tab2/annee/${this.niveauSelectionne}/section/${route}`)
+
+  }
+  goToMatiere(route:string){
+    this.router.navigateByUrl(`/tab/tabs/tab2/annee/${this.niveauSelectionne}/matiere/${route}`)
 
   }
 

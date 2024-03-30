@@ -4,14 +4,14 @@
   <h1><b>Choisir la section:</b></h1>
   <br>
   <div *ngIf= " anneeSelectionnee === '2'">
-    <ion-card   *ngFor="let section of sectionsDeuxieme" >
+    <ion-card   *ngFor="let section of sectionsDeuxieme" (click)="goToMatiere(section.route)" >
    
  
       <ion-card-content >{{ section.title }}</ion-card-content>
 </ion-card>
   </div>
   <div *ngIf= " anneeSelectionnee === '3' || anneeSelectionnee === 'bac'">
-    <ion-card   *ngFor="let section of sectionsTroisiemeBac" >
+    <ion-card   *ngFor="let section of sectionsTroisiemeBac" (click)="goToMatiere(section.route)">
    
  
       <ion-card-content >{{ section.title }}</ion-card-content>

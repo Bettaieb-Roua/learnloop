@@ -4,7 +4,7 @@
   <h1><b>Choisir année du niveau {{ niveauSelectionne }} :</b></h1>
   <br>
   <div  *ngIf= " niveauSelectionne === 'primaire'">
-    <ion-card   *ngFor="let annee of anneesPrimaire" >
+    <ion-card   *ngFor="let annee of anneesPrimaire;" (click)="goToMatiere(annee.route)">
    
  
       <ion-card-content >{{ annee.title }}</ion-card-content>
@@ -12,7 +12,7 @@
 <br>
   </div>
   <div  *ngIf= " niveauSelectionne === 'college'">
-    <ion-card   *ngFor="let annee of anneesCollege">
+    <ion-card   *ngFor="let annee of anneesCollege;" (click)="goToMatiere(annee.route)">
    
  
       <ion-card-content >{{ annee.title }}</ion-card-content>
@@ -20,7 +20,7 @@
 <br>
   </div>
   <div  *ngIf= " niveauSelectionne === 'secondaire'" >
-    <ion-card     >
+    <ion-card (click)="goToMatiere(anneesSecondaire[0].route)"    >
    
  
       <ion-card-content >{{anneesSecondaire[0].title}}</ion-card-content>

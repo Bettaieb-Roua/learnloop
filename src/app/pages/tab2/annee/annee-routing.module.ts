@@ -9,8 +9,12 @@ const routes: Routes = [
     component: AnneePage
   },
   {
-    path: 'section/:id',
+    path: 'section/:annee',
     loadChildren: () => import('./section/section.module').then( m => m.SectionPageModule)
+  },
+  {
+    path: 'matiere/:annee',
+    loadChildren: () => import('./matiere/matiere.module').then( m => m.MatierePageModule)
   }
 ];
 

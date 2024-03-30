@@ -1,0 +1,35 @@
+
+
+<ion-content [fullscreen]="true">
+  <br>
+  <h1><b>Choisir la matière:</b></h1>
+  <br>
+  <div *ngIf="section === 'Mt' || section === 'Sc'">
+    <ion-card   *ngFor="let matiere of matieresMSc" >
+   
+ 
+      <ion-card-content >{{ matiere.title }}</ion-card-content>
+</ion-card>
+  </div>
+  <div *ngIf="section === 'Lettre' ">
+    <ion-card   *ngFor="let matiere of matieresLettre" >
+   
+ 
+      <ion-card-content >{{ matiere.title }}</ion-card-content>
+</ion-card>
+  </div>
+  <div *ngIf="section === 'Inf' ">
+    <ion-card   *ngFor="let matiere of matieresInfo" >
+   
+ 
+      <ion-card-content >{{ matiere.title }}</ion-card-content>
+</ion-card>
+  </div>
+  <div *ngIf="section === 'Eco' ">
+    <ion-card   *ngFor="let matiere of matieresEcoGest" >
+   
+ 
+      <ion-card-content >{{ matiere.title }}</ion-card-content>
+</ion-card>
+  </div>
+</ion-content>

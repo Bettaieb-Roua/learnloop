@@ -9,26 +9,33 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SectionPage implements OnInit {
   sectionsDeuxieme =[
-    { title: 'Sciences', route: '1' },
-    { title: 'Lettres', route: '2' },
-    { title: 'Informatique', route: '3' },
-    { title: 'Economie & Gestion', route: '4' },
+    { title: 'Sciences', route: 'Sc' },
+    { title: 'Lettres', route: 'Lettre' },
+    { title: 'Informatique', route: 'Inf' },
+    { title: 'Economie & Gestion', route: 'Eco' },
   ]
   sectionsTroisiemeBac =[
-    { title: 'Maths', route: '1' },
-    { title: 'Sciences', route: '2' },
-    { title: 'Lettres', route: '3' },
-    { title: 'Informatique', route: '4' },
-    { title: 'Economie & Gestion', route: '5' },
+    { title: 'Maths', route: 'Mt' },
+    { title: 'Sciences', route: 'Sc' },
+    { title: 'Lettres', route: 'Lettre' },
+    { title: 'Informatique', route: 'Inf' },
+    { title: 'Economie & Gestion', route: 'Eco' },
   ]
   anneeSelectionnee: string | null = null;
+  niveauSelectionne: string | null = null;
+
 
   constructor(private route:ActivatedRoute, private router:Router) { }
-
+ 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.anneeSelectionnee = params.get('id');
+      this.anneeSelectionnee = params.get('annee');
+      this.niveauSelectionne = params.get('niveau');
+
   });
 
+}
+goToMatiere(route: string) {
+  this.router.navigateByUrl(`/tab/tabs/tab2/annee/${this.niveauSelectionne}/section/${this.anneeSelectionnee}/matiere-section/${route}`);
 }
 }
