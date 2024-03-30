@@ -9,17 +9,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SectionPage implements OnInit {
   sectionsDeuxieme =[
-    { title: 'Sciences', route: 'Sc' },
-    { title: 'Lettres', route: 'Lettre' },
-    { title: 'Informatique', route: 'Inf' },
-    { title: 'Economie & Gestion', route: 'Eco' },
+    { title: 'Sciences', route: 'Sciences' },
+    { title: 'Lettres', route: 'Lettres' },
+    { title: 'Informatique', route: 'Informatique' },
+    { title: 'Economie & Gestion', route: 'Economie & Gestion' },
   ]
   sectionsTroisiemeBac =[
-    { title: 'Maths', route: 'Mt' },
-    { title: 'Sciences', route: 'Sc' },
-    { title: 'Lettres', route: 'Lettre' },
-    { title: 'Informatique', route: 'Inf' },
-    { title: 'Economie & Gestion', route: 'Eco' },
+    { title: 'Maths', route: 'Maths' },
+    { title: 'Sciences', route: 'Sciences' },
+    { title: 'Lettres', route: 'Lettres' },
+    { title: 'Informatique', route: 'Informatique' },
+    { title: 'Economie & Gestion', route: 'Economie & Gestion' },
   ]
   anneeSelectionnee: string | null = null;
   niveauSelectionne: string | null = null;

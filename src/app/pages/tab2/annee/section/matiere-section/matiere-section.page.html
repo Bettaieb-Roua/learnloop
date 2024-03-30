@@ -4,28 +4,28 @@
   <br>
   <h1><b>Choisir la matière:</b></h1>
   <br>
-  <div *ngIf="section === 'Mt' || section === 'Sc'" >
+  <div *ngIf="section === 'Maths' || section === 'Sciences'" >
     <ion-card   *ngFor="let matiere of matieresMSc" (click)="goToType(matiere.route)">
    
  
       <ion-card-content >{{ matiere.title }}</ion-card-content>
 </ion-card>
   </div>
-  <div *ngIf="section === 'Lettre' ">
+  <div *ngIf="section === 'Lettres' ">
     <ion-card   *ngFor="let matiere of matieresLettre" (click)="goToType(matiere.route)">
    
  
       <ion-card-content >{{ matiere.title }}</ion-card-content>
 </ion-card>
   </div>
-  <div *ngIf="section === 'Inf' ">
+  <div *ngIf="section === 'Informatique' ">
     <ion-card   *ngFor="let matiere of matieresInfo" (click)="goToType(matiere.route)">
    
  
       <ion-card-content >{{ matiere.title }}</ion-card-content>
 </ion-card>
   </div>
-  <div *ngIf="section === 'Eco' " >
+  <div *ngIf="section === 'Economie & Gestion' " >
     <ion-card   *ngFor="let matiere of matieresEcoGest" (click)="goToType(matiere.route)" >
    
  
