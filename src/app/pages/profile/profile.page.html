@@ -1,13 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-title>My Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <img src="././././assets/images/user-profile.webp" alt="Photo de profil du client">
+    <ion-card-header>
+      <ion-card-subtitle>{{ user[0].email }}</ion-card-subtitle>
+      <ion-card-title>{{ user[0].name }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+<br>
+  <ion-list>
+    <ion-item (click)="goToOrdersPage()">
+      <ion-icon name="list" slot="start"></ion-icon>
+      Orders
+      <ion-badge color="primary">12</ion-badge>
+    </ion-item>
+    <br>
+    <ion-item (click)="goToLikedArticlesPage()">
+      <ion-icon name="heart-outline" slot="start"></ion-icon>
+      Liked Articles
+      <ion-badge color="primary">13</ion-badge>
+    </ion-item>
+    <br>
+    <ion-item (click)="goToSettingsPage()">
+      <ion-icon name="settings-outline" slot="start"></ion-icon>
+      Settings
+      
+    </ion-item>
+  </ion-list>
+
 </ion-content>

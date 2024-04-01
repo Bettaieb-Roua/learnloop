@@ -1,8 +1,15 @@
-
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+     
+      <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+    <ion-text> <b>Choisir le document à acheter:</b></ion-text>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
   <br>
-  <h1><b>Choisir le document à acheter:</b></h1>
   <br>
   <div >
     <ion-card   *ngFor="let type of typesDocuments" (click)="goToCatalog(type.route)" >

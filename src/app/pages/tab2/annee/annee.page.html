@@ -1,8 +1,17 @@
-
+<ion-header [translucent]="true">
+  <ion-toolbar>  
+    <ion-buttons slot="start">
+     
+      <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+    <ion-text> <b> Choisir année du niveau {{ niveauSelectionne }} :</b></ion-text>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <br>
-  <h1><b>Choisir année du niveau {{ niveauSelectionne }} :</b></h1>
-  <br>
+  
+  
+  
   <div  *ngIf= " niveauSelectionne === 'primaire'">
     <ion-card   *ngFor="let annee of anneesPrimaire;" (click)="goToMatiere(annee.route)">
    
@@ -32,13 +41,6 @@
 </ion-card>
 <br>
   </div>
-  <div  *ngIf= " niveauSelectionne === 'superieur'">
-    <ion-card   *ngFor="let annee of anneesSuperieur">
-   
- 
-      <ion-card-content >{{ annee.title }}</ion-card-content>
-</ion-card>
-<br>
-  </div>
+
  
 </ion-content>

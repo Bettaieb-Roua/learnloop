@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedDataService } from 'src/app/service/shared-data.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,8 +12,10 @@ export class LoginPage implements OnInit {
     email: '',
     password:''
   };
+  selectedRole: string = 'client';
 
-  constructor(private router:Router) { }
+
+  constructor(private router:Router, private sharedDataService: SharedDataService) { }
 
   ngOnInit() {
   }
@@ -34,5 +37,15 @@ export class LoginPage implements OnInit {
   }
   login(){
     this.router.navigate(['/tab']);
+    
+    this.sharedDataService.updateSelectedRole('Client');
+  }
+  loginSeller(){
+    this.sharedDataService.updateSelectedRole('Seller');
+    this.router.navigate(['/tab']);
+  }
+  loginAdmin(){
+    this.sharedDataService.updateSelectedRole('Admin');
+  
   }
 }

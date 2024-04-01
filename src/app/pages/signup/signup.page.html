@@ -9,23 +9,47 @@
 
     <ion-input class='input' label="Name" label-placement="floating"  fill="outline" placeholder="Enter Name"></ion-input>
     <ion-input class='input' label="Email" label-placement="floating"  fill="outline" placeholder="Enter Email"></ion-input>
-
     <ion-input class="input" label="Password" label-placement="floating"  fill="outline" placeholder="Enter password" type="password"></ion-input>
-  </form>
-  <br>
- <ion-text class="input">
-  I sign up as a :
- </ion-text>
- <br>
-   <br>
-  <ion-radio-group value="custom-checked">
-    <ion-radio value="custom" aria-label="Custom checkbox" class="custom-text">client</ion-radio>
-    <ion-radio value="custom-checked" class="seller" aria-label="Custom checkbox that is checked" class="custom-text">Seller</ion-radio><br />
-  
-  </ion-radio-group>
+    <ion-input class="input" label="Confirm Password" label-placement="floating"  fill="outline" placeholder="Re-enter password" type="password"></ion-input>
+    <ion-input class="input" label="Phone Number" label-placement="floating"  fill="outline" placeholder="Enter Phone Number" type="text"></ion-input>
+    <ion-select label="Gouvernorat" label-placement="floating" fill="outline" class="input">
+      <ion-select-option class="input" value="Ariana">Ariana</ion-select-option>
+      <ion-select-option class="input" value="Beja">Béja</ion-select-option>
+      <ion-select-option class="input" value="Ben Arous">Ben Arous</ion-select-option>
+      <ion-select-option class="input" value="Bizerte">Bizerte</ion-select-option>
+      <ion-select-option class="input" value="Gabes">Gabès</ion-select-option>
+      <ion-select-option class="input" value="Gafsa">Gafsa</ion-select-option>
+      <ion-select-option class="input" value="Jendouba">Jendouba</ion-select-option>
+      <ion-select-option class="input" value="Kairouan">Kairouan</ion-select-option>
+      <ion-select-option class="input" value="Kasserine">Kasserine</ion-select-option>
+      <ion-select-option class="input" value="Kebili">Kébili</ion-select-option>
+      <ion-select-option class="input" value="Kef">Le Kef</ion-select-option>
+      <ion-select-option class="input" value="Mahdia">Mahdia</ion-select-option>
+      <ion-select-option class="input" value="Manouba">La Manouba</ion-select-option>
+      <ion-select-option class="input" value="Medenine">Médenine</ion-select-option>
+      <ion-select-option class="input" value="Monastir">Monastir</ion-select-option>
+      <ion-select-option class="input" value="Nabeul">Nabeul</ion-select-option>
+      <ion-select-option class="input" value="Sfax">Sfax</ion-select-option>
+      <ion-select-option class="input" value="Sidi Bouzid">Sidi Bouzid</ion-select-option>
+      <ion-select-option class="input" value="Siliana">Siliana</ion-select-option>
+      <ion-select-option class="input" value="Sousse">Sousse</ion-select-option>
+      <ion-select-option class="input" value="Tataouine">Tataouine</ion-select-option>
+      <ion-select-option class="input" value="Tozeur">Tozeur</ion-select-option>
+      <ion-select-option class="input" value="Tunis">Tunis</ion-select-option>
+      <ion-select-option class="input" value="Zaghouan">Zaghouan</ion-select-option>
+    </ion-select>
+ 
+<ion-select label="Délégation" label-placement="floating" fill="outline" class="input">
+  <ion-select-option class="input" value="Tozeur">Tozeur</ion-select-option>
+  <ion-select-option class="input" value="Tunis">Tunis</ion-select-option>
+  <ion-select-option class="input" value="Zaghouan">Zaghouan</ion-select-option>
+</ion-select>
+<ion-input class="input" label="Addresse (optionnel)" label-placement="floating"  fill="outline" placeholder="Entrer votre addresse" type="text"></ion-input>
 
-  <br><br>
-  
+
+  </form>
+
+  <br>
   <ion-button class="signup-btn" type="submit" expand="block" [disabled]="!signupForm.valid">signup</ion-button>
   <ion-text>
     <p class="create-account" (click)="navigateToLogin()">Already have an account ? </p>

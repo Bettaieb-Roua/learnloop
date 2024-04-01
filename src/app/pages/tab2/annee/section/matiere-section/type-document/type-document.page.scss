@@ -1,5 +1,5 @@
-h1{
-    font-size:34px;
+ion-text{
+    font-size:32px;
     
     font-family:emoji;
 }
@@ -12,4 +12,14 @@ ion-card{
     margin-top: 50px;
     height:60px;
     margin-left : 40px;
+}
+ion-toolbar{
+    height:80px;
+
+}
+ion-icon{
+    margin-bottom:2px;
+    margin-top:10px;
+    height:27px;
+    width:27px;
 }

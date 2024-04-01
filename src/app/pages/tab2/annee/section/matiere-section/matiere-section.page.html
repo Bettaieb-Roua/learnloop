@@ -1,8 +1,16 @@
-
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+     
+      <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+    <ion-text> <b> Choisir la matière:</b></ion-text>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
   <br>
-  <h1><b>Choisir la matière:</b></h1>
+ 
   <br>
   <div *ngIf="section === 'Maths' || section === 'Sciences'" >
     <ion-card   *ngFor="let matiere of matieresMSc" (click)="goToType(matiere.route)">

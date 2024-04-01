@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { TabsPage } from './tabs.page';
-import { LoginPage } from '../login/login.page';
+import { Routes, RouterModule } from '@angular/router';
+
+import { TabsSellerPage } from './tabs-seller.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
-    component: TabsPage,
+    path: 'tabs-seller',
+    component: TabsSellerPage,
     children: [
       {
         path: 'tab1',
@@ -29,25 +29,18 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
       },
-      {
-        path: '',
-        redirectTo: '/tab/tabs/tab2',
-        pathMatch: 'full'
-      }
+    
     ]
   },
   {
-    path: 'login',
-    component: LoginPage,
-  },
-  {
     path: '',
-    redirectTo: '/tab/tabs/tab2',
+    redirectTo: '/tab2/tabs-seller/tab2',
     pathMatch: 'full'
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class TabsPageRoutingModule {}
+export class TabsSellerPageRoutingModule {}

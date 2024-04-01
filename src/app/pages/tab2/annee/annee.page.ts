@@ -26,16 +26,10 @@ export class AnneePage implements OnInit {
     { title: '1ère année', route: '1' },
     { title: '2ème année', route: '2' },
     { title: '3ème année', route: '3' },
-    { title: 'Baccalauréat', route: 'bac' }
+    { title: 'Baccalauréat', route: '4' }
   ];
   
-  anneesSuperieur = [
-    { title: 'première année', route: '1' },
-    { title: 'deuxième année', route: '2' },
-    { title: 'troisième année', route: '3' },
-    { title: 'quatrième année', route: '4' },
-    { title: 'cinquième année', route: '5' }
-  ];
+
   
 
 

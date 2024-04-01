@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: ProfilePage
+  },
+  {
+    path: 'favorites',
+    loadChildren: () => import('../favorites/favorites.module').then( m => m.FavoritesPageModule)  
+  },
+  {
+    path: 'profile-settings',
+    loadChildren: () => import('./profile-settings/profile-settings.module').then( m => m.ProfileSettingsPageModule)
   }
 ];
 

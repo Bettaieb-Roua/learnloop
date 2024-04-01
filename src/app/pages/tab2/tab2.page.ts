@@ -10,7 +10,6 @@ export class Tab2Page {
     { title: 'Primaire', image: 'assets/images/primaire.jpg', route: 'primaire' },
     { title: 'Collège', image: 'assets/images/collège.jpg', route: 'college' },
     { title: 'Secondaire', image: 'assets/images/lycée.jpg', route: 'secondaire' },
-    { title: 'Supérieur', image: 'assets/images/supérieur.jpg', route: 'superieur' }
   ];
 
   constructor(private route:Router) {}

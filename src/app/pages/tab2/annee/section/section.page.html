@@ -1,7 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+     
+      <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+    <ion-text> <b> Choisir la section:</b></ion-text>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
   <br>
-  <h1><b>Choisir la section:</b></h1>
+ <br>
+ <br>
   <br>
   <div *ngIf= " anneeSelectionnee === '2'">
     <ion-card   *ngFor="let section of sectionsDeuxieme" (click)="goToMatiere(section.route)" >
@@ -10,7 +20,7 @@
       <ion-card-content >{{ section.title }}</ion-card-content>
 </ion-card>
   </div>
-  <div *ngIf= " anneeSelectionnee === '3' || anneeSelectionnee === 'bac'">
+  <div *ngIf= " anneeSelectionnee === '3' || anneeSelectionnee === '4'">
     <ion-card   *ngFor="let section of sectionsTroisiemeBac" (click)="goToMatiere(section.route)">
    
  
