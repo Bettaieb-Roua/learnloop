@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -22,10 +23,6 @@ const routes: Routes = [
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
   },
-  {
-    path: 'tab2',
-    loadChildren: () => import('./pages/tabs-seller/tabs-seller.module').then( m => m.TabsSellerPageModule)
-  },
 
   {
     path: 'forgetpassword',
@@ -38,12 +35,10 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+    
   },
-  {
-    path: 'tabs-seller',
-    loadChildren: () => import('./pages/tabs-seller/tabs-seller.module').then( m => m.TabsSellerPageModule)
-  },
-
+ 
+ 
 ];
 @NgModule({
   imports: [

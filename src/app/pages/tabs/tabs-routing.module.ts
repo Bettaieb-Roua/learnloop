@@ -28,12 +28,9 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
+        
       },
-      {
-        path: '',
-        redirectTo: '/tab/tabs/tab2',
-        pathMatch: 'full'
-      }
+     
     ]
   },
   {
@@ -42,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tab/tabs/tab2',
+    redirectTo: '/tab/tabs/tab1',
     pathMatch: 'full'
   }
 ];

@@ -1,48 +1,24 @@
 <ion-content class="ion-padding">
   <br><br><br>
  <ion-text > 
-  <h1>Signup </h1>
+  <h1>Inscrivez vous</h1>
  </ion-text>
- <br><br><br>
+ <br>
 
   <form #signupForm="ngForm" (ngSubmit)="submitForm(signupForm.value)">
 
-    <ion-input class='input' label="Name" label-placement="floating"  fill="outline" placeholder="Enter Name"></ion-input>
+    <ion-input class='input' label="Nom" label-placement="floating"  fill="outline" placeholder="Enter Name"></ion-input>
     <ion-input class='input' label="Email" label-placement="floating"  fill="outline" placeholder="Enter Email"></ion-input>
-    <ion-input class="input" label="Password" label-placement="floating"  fill="outline" placeholder="Enter password" type="password"></ion-input>
-    <ion-input class="input" label="Confirm Password" label-placement="floating"  fill="outline" placeholder="Re-enter password" type="password"></ion-input>
-    <ion-input class="input" label="Phone Number" label-placement="floating"  fill="outline" placeholder="Enter Phone Number" type="text"></ion-input>
-    <ion-select label="Gouvernorat" label-placement="floating" fill="outline" class="input">
-      <ion-select-option class="input" value="Ariana">Ariana</ion-select-option>
-      <ion-select-option class="input" value="Beja">Béja</ion-select-option>
-      <ion-select-option class="input" value="Ben Arous">Ben Arous</ion-select-option>
-      <ion-select-option class="input" value="Bizerte">Bizerte</ion-select-option>
-      <ion-select-option class="input" value="Gabes">Gabès</ion-select-option>
-      <ion-select-option class="input" value="Gafsa">Gafsa</ion-select-option>
-      <ion-select-option class="input" value="Jendouba">Jendouba</ion-select-option>
-      <ion-select-option class="input" value="Kairouan">Kairouan</ion-select-option>
-      <ion-select-option class="input" value="Kasserine">Kasserine</ion-select-option>
-      <ion-select-option class="input" value="Kebili">Kébili</ion-select-option>
-      <ion-select-option class="input" value="Kef">Le Kef</ion-select-option>
-      <ion-select-option class="input" value="Mahdia">Mahdia</ion-select-option>
-      <ion-select-option class="input" value="Manouba">La Manouba</ion-select-option>
-      <ion-select-option class="input" value="Medenine">Médenine</ion-select-option>
-      <ion-select-option class="input" value="Monastir">Monastir</ion-select-option>
-      <ion-select-option class="input" value="Nabeul">Nabeul</ion-select-option>
-      <ion-select-option class="input" value="Sfax">Sfax</ion-select-option>
-      <ion-select-option class="input" value="Sidi Bouzid">Sidi Bouzid</ion-select-option>
-      <ion-select-option class="input" value="Siliana">Siliana</ion-select-option>
-      <ion-select-option class="input" value="Sousse">Sousse</ion-select-option>
-      <ion-select-option class="input" value="Tataouine">Tataouine</ion-select-option>
-      <ion-select-option class="input" value="Tozeur">Tozeur</ion-select-option>
-      <ion-select-option class="input" value="Tunis">Tunis</ion-select-option>
-      <ion-select-option class="input" value="Zaghouan">Zaghouan</ion-select-option>
+    <ion-input class="input" label="Mot de passe" label-placement="floating"  fill="outline" placeholder="Enter password" type="password"></ion-input>
+    <ion-input class="input" label="Confirmer mot de passe" label-placement="floating"  fill="outline" placeholder="Re-enter password" type="password"></ion-input>
+    <ion-input class="input" label="Numéro de téléphone" label-placement="floating"  fill="outline" placeholder="Enter Phone Number" type="text"></ion-input>
+    <ion-select label="Gouvernorat" label-placement="floating" fill="outline" class="input" [(ngModel)]="selectedGovernorate" name="governorate" (ionChange)="onGovernorateChange()" required>
+      <ion-select-option class="input" *ngFor="let governorate of governorates" [value]="governorate">{{ governorate }}</ion-select-option>
     </ion-select>
  
-<ion-select label="Délégation" label-placement="floating" fill="outline" class="input">
-  <ion-select-option class="input" value="Tozeur">Tozeur</ion-select-option>
-  <ion-select-option class="input" value="Tunis">Tunis</ion-select-option>
-  <ion-select-option class="input" value="Zaghouan">Zaghouan</ion-select-option>
+<ion-select label="Délégation" label-placement="floating" fill="outline" class="input" name="delegation" [(ngModel)]="selectedDelegation" required>
+  <ion-select-option class="input" *ngFor="let delegation of delegationsByGovernorate[selectedGovernorate]" [value]="delegation" >{{delegation}}</ion-select-option>
+  
 </ion-select>
 <ion-input class="input" label="Addresse (optionnel)" label-placement="floating"  fill="outline" placeholder="Entrer votre addresse" type="text"></ion-input>
 
@@ -50,14 +26,13 @@
   </form>
 
   <br>
-  <ion-button class="signup-btn" type="submit" expand="block" [disabled]="!signupForm.valid">signup</ion-button>
+  <ion-button class="signup-btn" type="submit" expand="block" [disabled]="!signupForm.valid" (click)="navigateToLogin()">Inscription</ion-button>
   <ion-text>
-    <p class="create-account" (click)="navigateToLogin()">Already have an account ? </p>
+    <p class="create-account" (click)="navigateToLogin()">Vous avez déja un compte? </p>
   </ion-text>
-<br><br>
+<br>
 
-<br><br>
-<ion-text class="custom-text"> Or sign up with social account </ion-text>
+<ion-text class="custom-text"> Ou inscrivez-vous avec un compte social : </ion-text>
 <br>
 <ion-grid>
   <ion-row>

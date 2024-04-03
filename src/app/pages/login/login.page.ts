@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SharedDataService } from 'src/app/service/shared-data.service';
+import { SharedDataService } from 'src/app/services/service/shared-data.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -15,10 +17,12 @@ export class LoginPage implements OnInit {
   selectedRole: string = 'client';
 
 
-  constructor(private router:Router, private sharedDataService: SharedDataService) { }
+  constructor(private router:Router, private sharedDataService: SharedDataService,private authService: AuthService) { }
+
 
   ngOnInit() {
   }
+
   
   submitForm(formValues: any) {
     console.log('Form Data: ', formValues);
@@ -34,14 +38,28 @@ export class LoginPage implements OnInit {
   }
   navigateToSignup(){
     this.router.navigate(['/signup']);
-  }
-  login(){
-    this.router.navigate(['/tab']);
     
-    this.sharedDataService.updateSelectedRole('Client');
+
+  }
+  login(credentials: { email: string, password: string }){
+   this.authService.login(credentials.email, credentials.password);
+
+  // this.router.navigate(['/tab/tabs/tab2']);
+  this.sharedDataService.selectedTab$.subscribe(tab => {
+    this.router.navigate(['/tab/tabs/' + tab]); 
+  });  
+  this.authService.login(credentials.email, credentials.password)
+      .subscribe(isLoggedIn => {
+        if (isLoggedIn) {
+          this.router.navigate(['/tab/tabs/tab2']);
+        } else {
+          // Gérer l'authentification échouée ici (afficher un message d'erreur, etc.)
+        }
+      });
+    
   }
   loginSeller(){
-    this.sharedDataService.updateSelectedRole('Seller');
+   
     this.router.navigate(['/tab']);
   }
   loginAdmin(){

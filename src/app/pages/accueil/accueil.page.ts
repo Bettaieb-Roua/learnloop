@@ -13,8 +13,8 @@ export class AccueilPage implements OnInit {
   ngOnInit() {
     
   }
-  goToLogin(){
-    this.router.navigate(['/login'])
+  goToExplore(){
+    this.router.navigate(['/tab'])
 
   }
 }

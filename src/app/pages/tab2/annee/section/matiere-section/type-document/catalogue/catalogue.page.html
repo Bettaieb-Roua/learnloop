@@ -13,7 +13,7 @@
     <ion-text class = 'custom' ><b>Matière: {{this.matiere}}</b></ion-text>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true" >
+<ion-content [fullscreen]="true"  >
   <div class="centered">
 
 
@@ -27,16 +27,59 @@
      <ion-text >{{ book.title }}</ion-text> <br>
      <ion-text>{{book.prix}}</ion-text> <br>
     
-     <ion-text>{{book.etat}}</ion-text> <br>
-     <ion-text>{{book.description}}    </ion-text>
+     <!-- <ion-text>{{book.etat}}</ion-text> <br>
+     <ion-text>{{book.description}}    </ion-text> -->
      
    </ion-card> 
   
  </div>
+ <ion-button class="buyButton"id="open-modal" expand="block"><ion-icon class="icon-custom" aria-hidden="true" name="camera"></ion-icon> Vendre Vos biens</ion-button>
+ <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">annuler</ion-button>
+        </ion-buttons>
+        <ion-title>Ajouter votre article</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="confirm()" [strong]="true">Confirmer</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-item>
+          <ion-input label="Description" placeholder="Donner Une description"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input label="Prix" type="text" placeholder="Donne votre Prix"></ion-input>
+        </ion-item>
+    
+      
+         
+            <ion-item>
+              <ion-select justify="start" placeholder="Préciser état de l'article" label="Etat"> 
+                <ion-select-option value="Neuf">Neuf</ion-select-option>
+                <ion-select-option value="Comme neuf">Comme neuf</ion-select-option>
+                <ion-select-option value="Très bon état">Très bon état</ion-select-option>
+                <ion-select-option value="Bon état">Bon état</ion-select-option>
+                <ion-select-option value="Acceptable">Acceptable</ion-select-option>
+                <ion-select-option value="Usé">Usé</ion-select-option>
+              </ion-select>
+            </ion-item>
+          
+        
+    
+  
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>
 </ion-content>
 <ion-content [fullscreen]="true" *ngIf="selectedRole==='Seller'">
-  <br>
-  <br>
+ 
  
     <ion-list>
       <ion-item>

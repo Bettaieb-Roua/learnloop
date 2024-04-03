@@ -3,39 +3,29 @@
 <ion-content class="ion-padding">
   <br><br>
  <ion-text > 
-  <h1>Login </h1>
+  <h1>Connectez vous </h1>
  </ion-text>
  <br>
   <form #loginForm="ngForm" (ngSubmit)="submitForm(loginForm.value)">
 
-    <ion-input class='input' label="Email" label-placement="floating"  fill="outline" placeholder="Enter Email"></ion-input>
-    <ion-input class="input" label="Password" label-placement="floating"  fill="outline" placeholder="Enter password" type="password"></ion-input>
+    <ion-input class='input' label="Email" [(ngModel)]="loginData.email" label-placement="floating"  fill="outline" placeholder="Enter Email" name="email" required></ion-input>
+    <ion-input class="input" label="Mot de passe"  [(ngModel)]="loginData.password" label-placement="floating"  fill="outline" placeholder="Enter password" type="password" name="password" required></ion-input>
   </form>
   <br>
-  <ion-text class="input">
-   I log in as a :
-  </ion-text>
-  <br>
-    <br>
-   <ion-radio-group value="custom-checked">
-     <ion-radio value="custom" aria-label="Custom checkbox" class="custom-text">client</ion-radio>
-     <ion-radio value="custom-checked" class="seller" aria-label="Custom checkbox that is checked" class="custom-text">Seller</ion-radio><br />
-   
-   </ion-radio-group>
+
+ 
  
    
   <ion-text>
-    <p class="forget-password" (click)="navigateToForgetPassword()">Forgot Password?</p>
+    <p class="forget-password" (click)="navigateToForgetPassword()">Mot de passe oublié ?</p>
   </ion-text>
   <br>
-  <ion-button class="login-btn" type="submit" expand="block" [disabled]="!loginForm.valid" (click)="loginSeller()">Login as a seller</ion-button>
-  <ion-button class="login-btn" type="submit" expand="block" [disabled]="!loginForm.valid" (click)="login()">Login as a client</ion-button>
-  <ion-button class="login-btn" type="submit" expand="block" [disabled]="!loginForm.valid" (click)="loginAdmin()">Login as Admin</ion-button>
+  <ion-button class="login-btn" type="submit" expand="block" [disabled]="!loginForm.valid" (click)="login(loginData)">Se connecter</ion-button>
   <ion-text>
-    <p class="create-account" (click)="navigateToSignup()">You don't have an account ? create one</p>
+    <p class="create-account" (click)="navigateToSignup()">Vous n'avez pas de compte? Créez-en un!</p>
   </ion-text>
 
-<ion-text> Or login with social account </ion-text>
+<ion-text> Ou connectez-vous avec un compte social : </ion-text>
 <br>
 <ion-grid>
   <ion-row>

@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true"   *ngIf="isAuthenticated">
   <ion-card>
     <img src="././././assets/images/user-profile.webp" alt="Photo de profil du client">
     <ion-card-header>

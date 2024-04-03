@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-annee',
@@ -8,6 +9,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./annee.page.scss'],
 })
 export class AnneePage implements OnInit {
+  isAuthenticated = false;
+
   anneesPrimaire = [
     { title: 'première année', route: '1' },
     { title: 'deuxième année', route: '2' },
@@ -36,9 +39,12 @@ export class AnneePage implements OnInit {
   
 anneesSecondaireSansPremier: { title: string; route: string; }[] | undefined;
 niveauSelectionne: string | null = null;
-  constructor(private route:ActivatedRoute, private router:Router) { }
+  constructor(private route:ActivatedRoute, private router:Router ,private authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.isLoggedIn().subscribe(isAuth => {
+      this.isAuthenticated = isAuth;
+    });
     this.route.paramMap.subscribe(params => {
       this.niveauSelectionne = params.get('niveau');
       this.anneesSecondaireSansPremier = this.anneesSecondaire.slice(1);

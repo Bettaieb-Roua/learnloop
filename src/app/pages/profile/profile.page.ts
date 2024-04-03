@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -8,9 +10,14 @@ import { Router } from '@angular/router';
 })
 export class ProfilePage implements OnInit {
 user=[{name:'Roua Bettaieb', email:'rouabettaieb@gmail.com'}]
-  constructor(private router:Router) { }
+isAuthenticated = false;
+  constructor(private router:Router,private authService: AuthService) { }
 
-  ngOnInit() {
+  ngOnInit() : void {
+    this.authService.isLoggedIn().subscribe(isAuth => {
+      this.isAuthenticated = isAuth;
+    });
+
   }
   goToOrdersPage() {
    
