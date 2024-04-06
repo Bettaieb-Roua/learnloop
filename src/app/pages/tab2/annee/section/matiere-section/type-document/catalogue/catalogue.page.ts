@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SharedDataService } from 'src/app/services/service/shared-data.service';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { product } from 'src/models/interface-product';
 @Component({
   selector: 'app-catalogue',
   templateUrl: './catalogue.page.html',
@@ -10,19 +11,29 @@ import { OverlayEventDetail } from '@ionic/core/components';
 })
 export class CataloguePage implements OnInit {
   @ViewChild(IonModal) modal: IonModal | any;
+  books:product[];
+  document: product;
 
   message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
   name: string='';
 
   
-  books = [
-    { title: 'Livre 1 ',prix:'1.200',etat:'Neuf',description:'blablablablablabla', image: 'assets/images/livres/livre1.jpg', route: 'primaire' },
-    { title: 'Livre 2',prix:'1.300',etat:'Neuf',description:'blablablablablabla', image: 'assets/images/livres/livre2.jpg', route: 'college' },
-    { title: 'Livre 3',prix:'1.500',etat:'Neuf',description:'blablablablablabla', image: 'assets/images/livres/livre3.jpg', route: 'secondaire' },
-  ];
+ 
   selectedRole: string = '';
   constructor(private router:Router, private route:ActivatedRoute, private sharedDataService:SharedDataService) { 
     this.modal = undefined;
+    this.document={} as product;
+    this.books = [
+      {date_post:new Date(),reservationmax_duration:'1',state: 'Neuf',category_id:5,owner_id:34,price:1.200,product_id:3,descrption:'blablablablablabla', product_picture: 'assets/images/livres/livre1.jpg' },
+      {date_post:new Date(),reservationmax_duration:'2',state: 'Neuf',category_id:5,owner_id:34,price:1.300,product_id:3,descrption:'blablablablablabla', product_picture: 'assets/images/livres/livre2.jpg'},
+      {date_post:new Date(),reservationmax_duration:'3',state: 'Neuf',category_id:5,owner_id:34,price:1.500,product_id:3,descrption:'blablablablablabla', product_picture: 'assets/images/livres/livre3.jpg'},
+      {date_post:new Date(),reservationmax_duration:'4',state: 'Neuf',category_id:5,owner_id:34,price:1.500,product_id:3,descrption:'blablablablablabla', product_picture: 'assets/images/livres/livre3.jpg'},
+      {date_post:new Date(),reservationmax_duration:'5',state: 'Neuf',category_id:5,owner_id:34,price:1.500,product_id:3,descrption:'blablablablablabla', product_picture: 'assets/images/livres/livre3.jpg'},
+      {date_post:new Date(),reservationmax_duration:'6',state: 'Neuf',category_id:5,owner_id:34,price:1.500,product_id:3,descrption:'blablablablablabla', product_picture: 'assets/images/livres/livre3.jpg'},
+      {date_post:new Date(),reservationmax_duration:'7',state: 'Neuf',category_id:5,owner_id:34,price:1.500,product_id:3,descrption:'blablablablablabla', product_picture: 'assets/images/livres/livre3.jpg'},
+   
+  
+    ];
   }
  
   niveau: string | null = null; 
@@ -43,7 +54,9 @@ export class CataloguePage implements OnInit {
     });
   }
  
-  goToSeller(){
+  showDetails(id:number){
+    this.router.navigateByUrl(`/tab/tabs/tab2/annee/${this.niveau}/section/${this.annee}/matiere-section/${ this.section}/type-document/${this.matiere}/catalogue/${this.typeDocument}/document-details/${id}`)
+
 
   }
   likeBook(book: string) {
@@ -59,7 +72,9 @@ export class CataloguePage implements OnInit {
 
   confirm() {
     this.modal.dismiss(this.name, 'confirm');
+    console.log('article créé',this.document)
   }
+
 
   onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;

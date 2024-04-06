@@ -16,7 +16,7 @@ h1{
 .icon-custom{
     height:50px;
     width: 50px;
-    margin-right: 10px;
+    
 }
 .buyButton{
     height:80px;  
@@ -27,9 +27,7 @@ h1{
     border-radius:150px;
     font-size: 25px;
 }
-ion-button{
-    
-}
+
 ion-label{
     font-size: 15px;
 }
@@ -43,10 +41,12 @@ ion-label{
     width:230px;
 }
 ion-card{
-    height:290px;
-    width:230px;
-    font-size: 24px;
-    
+    height:270px;
+    width: 190px;
+    font-size: 24px;    
+}
+ion-col{
+    margin-right:24px
 }
 .centered {
     display: flex;

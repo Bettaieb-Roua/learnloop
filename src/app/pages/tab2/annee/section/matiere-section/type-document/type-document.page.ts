@@ -13,8 +13,6 @@ export class TypeDocumentPage implements OnInit {
     { title: 'Séries d\'exercices ', route: 'Séries d\'exercices' },
     { title: 'Parascolaires', route: 'Parascolaires' },
     { title: 'Examens', route: 'Examens' },
-
-
   ]
   constructor(private router:Router, private route:ActivatedRoute) { }
   niveau: string | null = null; 

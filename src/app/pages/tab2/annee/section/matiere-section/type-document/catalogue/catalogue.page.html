@@ -14,26 +14,30 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true"  >
-  <div class="centered">
-
-
-    <ion-card   *ngFor="let book of books" (click)="goToSeller()">
-      <img [alt]="book.title" [src]="book.image" /> 
+  <ion-grid>
+    <ion-row>
+      <ion-col size="5" offset-1 *ngFor="let book of books">
+    <ion-card  (click)="showDetails(book.product_id)">
+      <img [alt]="book.price" [src]="book.product_picture" /> 
       <!-- <ion-button slot="end" (click)="likeBook(book.title)">
         <ion-icon name="heart"></ion-icon>
       </ion-button> 
       <br> -->
     
-     <ion-text >{{ book.title }}</ion-text> <br>
-     <ion-text>{{book.prix}}</ion-text> <br>
+     <ion-text>{{book.price}}</ion-text> <br>
     
      <!-- <ion-text>{{book.etat}}</ion-text> <br>
      <ion-text>{{book.description}}    </ion-text> -->
      
    </ion-card> 
-  
- </div>
- <ion-button class="buyButton"id="open-modal" expand="block"><ion-icon class="icon-custom" aria-hidden="true" name="camera"></ion-icon> Vendre Vos biens</ion-button>
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+
+ <ion-button class="buyButton"id="open-modal" expand="block">
+  <ion-icon class="icon-custom" aria-hidden="true" name="camera"></ion-icon>&nbsp;
+   Vendre Vos biens
+  </ion-button>
  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
   <ng-template>
     <ion-header>
@@ -43,24 +47,28 @@
         </ion-buttons>
         <ion-title>Ajouter votre article</ion-title>
         <ion-buttons slot="end">
-          <ion-button (click)="confirm()" [strong]="true">Confirmer</ion-button>
+          <ion-button block (click)="confirm()" [strong]="true">Confirmer</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
       <ion-list>
+        <ion-item-divider color="primary">
+          <ion-icon name="list-outline"></ion-icon> &nbsp;
+           Détails du document
+          </ion-item-divider>
         <ion-item>
-          <ion-input label="Description" placeholder="Donner Une description"></ion-input>
+          <ion-input label="Description" [(ngModel)]="document.descrption" type="text" placeholder="Donner Une description"></ion-input>
         </ion-item>
     
         <ion-item>
-          <ion-input label="Prix" type="text" placeholder="Donne votre Prix"></ion-input>
+          <ion-input label="Prix" [(ngModel)]="document.price" type="text" placeholder="Donne votre Prix"></ion-input>
         </ion-item>
     
       
          
             <ion-item>
-              <ion-select justify="start" placeholder="Préciser état de l'article" label="Etat"> 
+              <ion-select justify="start" placeholder="Préciser état de l'article" label="Etat" [(ngModel)]="document.state" > 
                 <ion-select-option value="Neuf">Neuf</ion-select-option>
                 <ion-select-option value="Comme neuf">Comme neuf</ion-select-option>
                 <ion-select-option value="Très bon état">Très bon état</ion-select-option>
@@ -78,39 +86,4 @@
   </ng-template>
 </ion-modal>
 </ion-content>
-<ion-content [fullscreen]="true" *ngIf="selectedRole==='Seller'">
- 
- 
-    <ion-list>
-      <ion-item>
-        <ion-input label="Description" placeholder="Donner Une description"></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-input label="Prix" type="text" placeholder="Donne votre Prix"></ion-input>
-      </ion-item>
-  
-    
-       
-          <ion-item>
-            <ion-select justify="start" placeholder="Préciser état de l'article" label="Etat"> 
-              <ion-select-option value="Neuf">Neuf</ion-select-option>
-              <ion-select-option value="Comme neuf">Comme neuf</ion-select-option>
-              <ion-select-option value="Très bon état">Très bon état</ion-select-option>
-              <ion-select-option value="Bon état">Bon état</ion-select-option>
-              <ion-select-option value="Acceptable">Acceptable</ion-select-option>
-              <ion-select-option value="Usé">Usé</ion-select-option>
-            </ion-select>
-          </ion-item>
-        
-      
-  
 
-    </ion-list>
-
-  <ion-button >
-    <!-- <ion-icon class="icon-custom" aria-hidden="true" name="camera"></ion-icon> <br> -->
-    Ajouter article à vendre
-  
-  </ion-button>
-</ion-content>
