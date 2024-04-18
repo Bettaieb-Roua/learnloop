@@ -1,13 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
+import { AlertController } from '@ionic/angular';
+import { HttpErrorResponse } from '@angular/common/http';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
   styleUrls: ['./signup.page.scss'],
 })
 export class signupPage implements OnInit {
-  selectedGovernorate: string = '';
-  selectedDelegation: string = '';
+  name:string='';
+  email:string= '';
+  password:string='';
+  confirmPassword:string='';
+  phoneNumber:string='';
+  selectedGovernorate:string='';
+  selectedDelegation:string='';
+  address:string='';
+  picture:string='';
+  nameError: string = '';
+  emailError: string = '';
+  emailFormatError: string = '';
+
   governorates: string[] = [
     'Ariana', 'Beja', 'Ben Arous', 'Bizerte', 'Gabes', 'Gafsa', 'Jendouba', 'Kairouan',
     'Kasserine', 'Kebili', 'Le Kef', 'Mahdia', 'Manouba', 'Medenine', 'Monastir', 'Nabeul',
@@ -40,24 +55,126 @@ export class signupPage implements OnInit {
     'Tunis': ['Tunis Ville', 'Ariana', 'Ben Arous', 'La Marsa', 'Le Kram', 'Sidi Bou Said'],
     'Zaghouan': ['Zaghouan Ville', 'Zriba', 'El Fahs', 'Nadhour', 'Bir Mcherga']
   };
-  signupData = {
- 
-    email: '',
-    password:''
-  };
+  selectedGovernorateChanged: boolean = false;
+  selectedDelegationChanged:boolean=false;
 
-  constructor(private router:Router) { }
-
-  ngOnInit() {
+  validateEmailFormat(email: string): boolean {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
   }
-  onGovernorateChange() {
-    // Réinitialiser la sélection de la délégation lorsque le gouvernorat change
-    this.selectedDelegation = '';
+
+  constructor(private router:Router,private authHandler: AuthService,private alertController: AlertController) {
+
+   }
+ ngOnInit() {
+
+ }
+ async onSubmit(form: any) {
+  this.clearErrors(); 
+  if (this.name.trim() === '') {
+    form.controls['name'].markAsTouched();
+  }
+  if (this.email.trim() === '') {
+    form.controls['email'].markAsTouched();
+  }
+  else if (!this.validateEmailFormat(this.email)) {
+    this.emailFormatError = 'Format d\'email invalide';
+  }
+  if (this.password.trim() === '') {
+    form.controls['password'].markAsTouched();
+  }
+  if (this.confirmPassword.trim() === '') {
+    form.controls['confirmPassword'].markAsTouched();
+  }
+  if (this.phoneNumber.trim() === '') {
+    form.controls['phoneNumber'].markAsTouched();
+  }
+  if (this.address.trim() === '') {
+    form.controls['address'].markAsTouched();
   }
   
-  submitForm(formValues: any) {
-    console.log('Form Data: ', formValues);
+  if (form.valid  && this.validatePassword()) {
+    const userData = {
+      'first_name': this.name,
+      'email': this.email,    
+      'password': this.password,
+      'phone': this.phoneNumber,
+      'governorate': this.selectedGovernorate,
+      'delegation': this.selectedDelegation,
+      'address': this.address,
+      'picture': this.picture,
+    };
+    this.authHandler.signup(userData).subscribe(
+      (response: any) => {
+        this.router.navigateByUrl('/login');
+        console.log('Signup response:', response);
+      },
+      (error: HttpErrorResponse) => {
+        if (error.status === 400 && error.error && error.error.username && error.error.username[0] === 'A user with that username already exists.') {
+          // this.handleUsernameAlreadyExists();
+        } else if (error.status === 400 && error.error && error.error.error === 'Email already exists') {
+          this.handleEmailAlreadyExists();
+        } else {
+          this.handleError(error);
+        }
+      }
+    );
   }
+
+}
+clearErrors() {
+  this.nameError = '';
+  this.emailError = '';
+}
+validatePassword(): boolean {
+  return this.password === this.confirmPassword;
+}
+handleEmailAlreadyExists() {
+  this.emailError = 'Email already exists. Please use a different email address.';
+}
+handleError(error: HttpErrorResponse) {
+  let errorMessage = 'An error occurred during signup. Please try again later.';
+  if (error.error && error.error.message) {
+    errorMessage = error.error.message;
+  }
+  this.alertController.create({
+    header: 'Signup Error',
+    message: errorMessage,
+    buttons: ['OK']
+  }).then(alert => alert.present());
+}
+  onGovernorateChange() {
+    if (!this.selectedGovernorateChanged && this.selectedGovernorate.trim() === '') {
+      // Afficher le message d'erreur uniquement si le gouvernorat n'a pas été changé
+      this.alertController.create({
+        header: 'Attention!',
+        message: 'Il faut choisir un gouvernorat.',
+        buttons: ['OK']
+      }).then(alert => alert.present());
+    }
+    // Réinitialiser la sélection de la délégation lorsque le gouvernorat change
+    this.selectedDelegation = '';
+    // Réinitialiser le flag après chaque changement de gouvernorat
+    this.selectedGovernorateChanged = false;
+  }
+  onDelegationChange() {
+    if (!this.selectedDelegationChanged && (this.selectedGovernorate === null || this.selectedGovernorate.trim() === '')) {
+      this.alertController.create({
+        header: 'Attention!',
+        message: 'Il faut choisir une délégation',
+        buttons: ['OK']
+      }).then(alert => alert.present());
+    }
+    // Réinitialiser la sélection de la délégation lorsque le gouvernorat change
+    this.selectedDelegation = '';
+    // Réinitialiser le flag après chaque changement de gouvernorat
+    this.selectedDelegationChanged = false;
+  }
+  customCounterFormatter(inputLength: number, maxLength: number) {
+    return `${maxLength} caractères maximum . Il reste ${maxLength - inputLength} caractères`;
+  }
+  
+  
 
 
   navigateToLogin(){

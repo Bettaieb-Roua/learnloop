@@ -6,40 +6,75 @@
   <h1>Connectez vous </h1>
  </ion-text>
  <br>
-  <form #loginForm="ngForm" (ngSubmit)="submitForm(loginForm.value)">
+  <form #loginForm="ngForm" (ngSubmit)="submitForm(loginForm)" action="javascript:void(0)">
+<!-- email -->
+<ion-item>
+  <ion-label position="floating" >Email</ion-label>          
 
-    <ion-input class='input' label="Email" [(ngModel)]="loginData.email" label-placement="floating"  fill="outline" placeholder="Enter Email" name="email" required></ion-input>
-    <ion-input class="input" label="Mot de passe"  [(ngModel)]="loginData.password" label-placement="floating"  fill="outline" placeholder="Enter password" type="password" name="password" required></ion-input>
+    <ion-input 
+    type="email" 
+    #emailControl="ngModel"
+    class='form-control' 
+    id="email"
+    placeholder="Entrer votre Email"
+   [(ngModel)]="email"  
+    name="email" 
+    color="light" 
+    required></ion-input>
+  </ion-item>
+  <div *ngIf=" emailControl.invalid && emailControl.touched" class="error-message">
+    <ion-icon name="information-circle-outline"></ion-icon> Le champ Email est obligatoire.
+  </div>
+  <div *ngIf="emailFormatError !== ''" class="error-message">
+    <ion-icon name="information-circle-outline"></ion-icon> {{ emailFormatError }}
+  </div>
+  <!-- mot de passe  -->
+  <ion-item>
+    <ion-label position="floating" >Mot de passe:</ion-label>          
+
+    <ion-input
+    type="password"
+    #passwordControl="ngModel"
+    class='form-control' 
+    id="password"
+   [(ngModel)]="password" 
+   label-placement="floating"  
+   fill="outline"
+    placeholder="Entrer votre mot de passe" 
+     name="password"
+      color="light" 
+      required></ion-input>
+  </ion-item>
+  <div *ngIf=" passwordControl.invalid && passwordControl.touched" class="error-message">
+    <ion-icon name="information-circle-outline"></ion-icon> Le champ mot de passe est obligatoire.
+  </div>
+  <ion-button class="login-btn" type="submit" expand="block" [disabled]="!loginForm.valid" >Se connecter</ion-button>
+
   </form>
   <br>
-
- 
- 
-   
   <ion-text>
     <p class="forget-password" (click)="navigateToForgetPassword()">Mot de passe oublié ?</p>
   </ion-text>
   <br>
-  <ion-button class="login-btn" type="submit" expand="block" [disabled]="!loginForm.valid" (click)="login(loginData)">Se connecter</ion-button>
   <ion-text>
     <p class="create-account" (click)="navigateToSignup()">Vous n'avez pas de compte? Créez-en un!</p>
   </ion-text>
 
-<ion-text> Ou connectez-vous avec un compte social : </ion-text>
+<ion-text> Ou connectez-vous avec  : </ion-text>
 <br>
 <ion-grid>
   <ion-row>
     <ion-col size="6">
-      <ion-button class="media-btn" expand="block" (click)="loginWithGoogle()">
-        <ion-icon class="icon" slot="start" name="logo-google"></ion-icon>
-       
+      <ion-button class="ion-color-facebook" shape="round" expand="block" (click)="loginWithGoogle()">
+        <ion-icon slot="start" name="logo-facebook"></ion-icon>
+        Facebook       
       </ion-button>
     </ion-col>
     <ion-col size="6">
-      <ion-button class="media-btn" expand="block" (click)="loginWithFacebook()">
-        <ion-icon class="icon" slot="start" name="logo-facebook"></ion-icon>
-     
-      </ion-button>
+      <ion-button  class="ion-color-google" shape="round" expand="block" (click)="loginWithFacebook()">
+        <ion-icon slot="start" name="logo-google"></ion-icon>
+        Google     
+       </ion-button>
     </ion-col>
   </ion-row>
 </ion-grid>

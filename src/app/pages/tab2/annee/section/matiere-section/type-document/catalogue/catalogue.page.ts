@@ -4,6 +4,9 @@ import { SharedDataService } from 'src/app/services/service/shared-data.service'
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { product } from 'src/models/interface-product';
+import { HttpClient } from '@angular/common/http';
+import { CatalogueService } from 'src/app/services/catalogue/catalogue.service'; // Importez votre service
+
 @Component({
   selector: 'app-catalogue',
   templateUrl: './catalogue.page.html',
@@ -20,7 +23,7 @@ export class CataloguePage implements OnInit {
   
  
   selectedRole: string = '';
-  constructor(private router:Router, private route:ActivatedRoute, private sharedDataService:SharedDataService) { 
+  constructor(private router:Router, private route:ActivatedRoute, private sharedDataService:SharedDataService,private catalogueService: CatalogueService) { 
     this.modal = undefined;
     this.document={} as product;
     this.books = [
@@ -73,6 +76,17 @@ export class CataloguePage implements OnInit {
   confirm() {
     this.modal.dismiss(this.name, 'confirm');
     console.log('article créé',this.document)
+       // Appel à l'API pour ajouter le document
+       this.catalogueService.addDocument(this.document).subscribe(
+        response => {
+          console.log('Réponse de l\'API :', response);
+          // Réinitialisez le document après l'ajout réussi
+          this.document = {} as product;
+        },
+        error => {
+          console.error('Erreur lors de l\'ajout du document :', error);
+        }
+      );
   }
 
 

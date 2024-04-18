@@ -5,28 +5,149 @@
  </ion-text>
  <br>
 
-  <form #signupForm="ngForm" (ngSubmit)="submitForm(signupForm.value)">
+  <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" >
+    <!-- Nom et Prénom -->
+    <ion-item>
+      <ion-label position="floating" >Nom et Prénom</ion-label>          
+      <ion-input
+      type="text" 
+      class="form-control"
+      id="name"
+      placeolder="Entrer votre nom et prénom"
+      [(ngModel)]="name"
+      name="name"
+      #nameControl="ngModel"
+      required
+      ></ion-input>
+    </ion-item>
+        <div *ngIf=" nameControl.invalid && nameControl.touched" class="error-message">
+          <ion-icon name="information-circle-outline"></ion-icon> Le champ de nom et prénom est obligatoire.
+        </div>
+    <!-- Email-->
 
-    <ion-input class='input' label="Nom" label-placement="floating"  fill="outline" placeholder="Enter Name"></ion-input>
-    <ion-input class='input' label="Email" label-placement="floating"  fill="outline" placeholder="Enter Email"></ion-input>
-    <ion-input class="input" label="Mot de passe" label-placement="floating"  fill="outline" placeholder="Enter password" type="password"></ion-input>
-    <ion-input class="input" label="Confirmer mot de passe" label-placement="floating"  fill="outline" placeholder="Re-enter password" type="password"></ion-input>
-    <ion-input class="input" label="Numéro de téléphone" label-placement="floating"  fill="outline" placeholder="Enter Phone Number" type="text"></ion-input>
-    <ion-select label="Gouvernorat" label-placement="floating" fill="outline" class="input" [(ngModel)]="selectedGovernorate" name="governorate" (ionChange)="onGovernorateChange()" required>
-      <ion-select-option class="input" *ngFor="let governorate of governorates" [value]="governorate">{{ governorate }}</ion-select-option>
-    </ion-select>
- 
-<ion-select label="Délégation" label-placement="floating" fill="outline" class="input" name="delegation" [(ngModel)]="selectedDelegation" required>
-  <ion-select-option class="input" *ngFor="let delegation of delegationsByGovernorate[selectedGovernorate]" [value]="delegation" >{{delegation}}</ion-select-option>
-  
-</ion-select>
-<ion-input class="input" label="Addresse (optionnel)" label-placement="floating"  fill="outline" placeholder="Entrer votre addresse" type="text"></ion-input>
+        <ion-item>
+          <ion-label position="floating" >Email</ion-label>          
+          <ion-input
+          type="email" 
+          class="form-control"
+          id="email"
+          placeolder="Entrer votre Email"
+          [(ngModel)]="email"
+          name="email"
+          #emailControl="ngModel"
+          required
+          ></ion-input>
+        </ion-item>
+            <div *ngIf=" emailControl.invalid && emailControl.touched" class="error-message">
+              <ion-icon name="information-circle-outline"></ion-icon> Le champ Email est obligatoire.
+            </div>
+            <div *ngIf="emailFormatError !== ''" class="error-message">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ emailFormatError }}
+            </div>
+            <!-- mot de passe -->
+          <ion-item>
+              <ion-label position="floating">Mot de passe</ion-label>
+              <ion-input
+                type="password"
+                class="form-control"
+                id="password"
+                placeolder="Entrer votre mot de passe"
+                [(ngModel)]="password"
+                name="password"
+                #passwordControl="ngModel"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item *ngIf="passwordControl.invalid && passwordControl.touched" class="error-message">
+              <ion-icon name="information-circle-outline"></ion-icon> Le champ Mot de passe est obligatoire.
+            </ion-item>
+            <!-- confirmer mot de passe -->
+            <ion-item>
+              <ion-label position="floating">Confirmer le mot de passe</ion-label>
+              <ion-input
+                type="password"
+                class="form-control"
+                id="confirmPassword"
+                placeolder="Confirmer votre mot de passe"
+                [(ngModel)]="confirmPassword"
+                name="confirmPassword"
+                #confirmPasswordControl="ngModel"
+                required
+              ></ion-input>
+            </ion-item>
+            <div *ngIf=" confirmPasswordControl.invalid &&confirmPasswordControl.touched" class="error-message">
+              <ion-icon name="information-circle-outline"></ion-icon> Le champ Confirmer le mot de passe est obligatoire.
+            </div>
+            <div *ngIf=" password !== confirmPassword " class="error-message">
+              <ion-icon name="information-circle-outline"></ion-icon> Les champs Mot de passe et Confirmer le mot de passe doivent correspondre.
+            </div>
+            <!-- champ téléphone -->
+            <ion-item>
+              <ion-label position="floating" fill="outline">N° téléphone:</ion-label>          
+              <ion-input
+              type="text" 
+              class="form-control"
+              id="téléphone"
+              placeolder="Entrer votre numéro de téléphone"
+              [(ngModel)]="phoneNumber"
+              name="phoneNumber"
+              #phoneNumberControl="ngModel"
+              required
+              ></ion-input>
+            </ion-item>
+                <div *ngIf=" phoneNumberControl.invalid && phoneNumberControl.touched" class="error-message">
+                  <ion-icon name="information-circle-outline"></ion-icon> Le champ numéro de téléphone est obligatoire.
+                </div>
+                <!-- gouvernorat -->
+                <ion-item>
+                  <ion-label position="floating" >Gouvernorat:</ion-label>
+                <ion-select
+                 class="form-control" 
+                 [(ngModel)]="selectedGovernorate" 
+                 name="governorate" 
+                 (ionChange)="onGovernorateChange()" 
+                 (ionCancel)="onGovernorateChange()"
+                 required>
+                  <ion-select-option 
+                  class="input" *ngFor="let governorate of governorates" [value]="governorate">{{ governorate }}</ion-select-option>
+                </ion-select>
+              </ion-item>
+             
+              <ion-item>
+                <ion-label position="floating" >Délégation:</ion-label>
+              <ion-select 
+               class="input"
+                name="delegation" 
+                [(ngModel)]="selectedDelegation" 
+                (ionChange)="onDelegationChange()" 
+                (ionCancel)="onDelegationChange()"
+                required>
+                <ion-select-option 
+                class="input" *ngFor="let delegation of delegationsByGovernorate[selectedGovernorate]" [value]="delegation" >{{delegation}}</ion-select-option>
+                
+              </ion-select>
+            </ion-item>
+          <ion-item>  
+            <ion-label position="floating">Addresse(optionnel)</ion-label>
+            <ion-input 
+            class="form-control"
+            id="address"
+            [(ngModel)]="address"
+              name="address"
+              #addressControl="ngModel"
+              
+              placeholder="Entrer votre addresse" 
+              type="text"
+              required>
+            </ion-input>
+          </ion-item>
+        
+<ion-button class="signup-btn" type="submit" expand="block" [disabled]="!signupForm.valid" >Inscription</ion-button>
 
 
   </form>
 
   <br>
-  <ion-button class="signup-btn" type="submit" expand="block" [disabled]="!signupForm.valid" (click)="navigateToLogin()">Inscription</ion-button>
   <ion-text>
     <p class="create-account" (click)="navigateToLogin()">Vous avez déja un compte? </p>
   </ion-text>

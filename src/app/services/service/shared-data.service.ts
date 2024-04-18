@@ -9,9 +9,6 @@ export class SharedDataService {
   selectedTab$ = this.selectedTabSubject.asObservable();
 
   
- 
-
-
 
   private selectedRoleSubject = new BehaviorSubject<string>('client');
   selectedRole$ = this.selectedRoleSubject.asObservable();
